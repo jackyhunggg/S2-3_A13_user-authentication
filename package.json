@@ -1,0 +1,25 @@
+{
+  "name": "s2-3_a13",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jackyhunggg/S2-3_A13_user-authentication.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jackyhunggg/S2-3_A13_user-authentication/issues"
+  },
+  "homepage": "https://github.com/jackyhunggg/S2-3_A13_user-authentication#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.0"
+  }
+}
