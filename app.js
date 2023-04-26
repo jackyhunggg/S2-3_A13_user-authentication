@@ -18,7 +18,7 @@ db.on('error', () => {
     console.log('mongoose error!')
 })
 
-db.once('connection', () => {
+db.once('open', () => {
     console.log('mongodb connected!')
 })
 
