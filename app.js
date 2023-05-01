@@ -5,10 +5,11 @@ if (process.env.NODE_ENV !== 'production') { require('dotenv').config() }
 const express = require('express')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
+const USER = require('./models/user')
 
 const app = express()
 const mongoose  = require('mongoose')
-const port = 3000
+const port = 4564
 
 // setting connection to database
 mongoose.connect(process.env.MONGODB_URI,  { useNewUrlParser: true, useUnifiedTopology: true })
@@ -42,9 +43,19 @@ app.post('/', (req, res) => {
     // define email & password
     console.log(req.body)
     // use findOne to see if the data exist in the database
+    USER.findOne({email: req.body.email})
+      .then(data => {
+        if(data) {
     // if yes, show welcome message
+          render('welcome')
+        } else {
     // if no, show alert and redirect to main page
-    res.render('index')
+          window.alert('Username 或Password 錯誤')
+          res.render('index')
+        }
+      })
+  
+
 })
 
 // start and listen on the Express server
