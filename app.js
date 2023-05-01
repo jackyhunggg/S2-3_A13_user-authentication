@@ -9,7 +9,7 @@ const USER = require('./models/user')
 
 const app = express()
 const mongoose  = require('mongoose')
-const port = 4564
+const port = 3000
 
 // setting connection to database
 mongoose.connect(process.env.MONGODB_URI,  { useNewUrlParser: true, useUnifiedTopology: true })
@@ -43,19 +43,16 @@ app.post('/', (req, res) => {
     // define email & password
     console.log(req.body)
     // use findOne to see if the data exist in the database
-    USER.findOne({email: req.body.email})
+    USER.findOne({email: req.body.email, password: req.body.password})
       .then(data => {
         if(data) {
     // if yes, show welcome message
-          render('welcome')
+          res.render('welcome', { firstName: data.firstName })
         } else {
     // if no, show alert and redirect to main page
-          window.alert('Username 或Password 錯誤')
-          res.render('index')
+          res.render('error')
         }
       })
-  
-
 })
 
 // start and listen on the Express server
